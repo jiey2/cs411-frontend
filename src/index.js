@@ -4,6 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// import fonts
+// import './fonts/AirbnbCerealMedium.ttf'
+// import './fonts/AirbnbCerealLight.ttf'
+// import './fonts/AirbnbCerealExtraBold.ttf'
+// import './fonts/AirbnbCerealBook.ttf'
+// import './fonts/AirbnbCerealBold.ttf'
+// import './fonts/AirbnbCerealBlack.ttf'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
