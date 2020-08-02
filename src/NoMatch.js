@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-const bigmid = styled.h1`
-    color: #265
-    font-size: 25rem
-    `
-;
+import { Result, Button } from 'antd';
 
 class NoMatch extends Component {
 
     render() { 
         return (
             <div>
-                <bigmid>
-                404
-                </bigmid>
+                <Result
+                    status="404"
+                    title="404"
+                    subTitle="Sorry, the page you visited does not exist."
+                    extra={<Button type="primary" href='/'>Back Home</Button>}
+                />
             </div>
         );
     }
 }
  
 export default NoMatch;
+
+
+
+
+    
