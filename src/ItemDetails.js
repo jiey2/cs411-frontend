@@ -1,8 +1,10 @@
 import React, { Component, useEffect } from 'react';
 import { Image, Container } from 'react-bootstrap'
-import { Rate, Statistic, Row, Col } from 'antd';
-import { HeartOutlined, HeartTwoTone } from '@ant-design/icons';
+import { Rate, Statistic, Row, Col, Card } from 'antd';
+import { HeartOutlined, ArrowUpOutlined, ArrowDownOutlined, HeartFilled } from '@ant-design/icons';
 import styled from 'styled-components';
+import ReactDOM from 'react-dom'; 
+import Comments from './components/Comments';
 
 const StyleIcon = styled(Image)`
     width: 300px;
@@ -25,18 +27,33 @@ class ItemDetails extends Component {
 
     async setRating(myRate) {
         this.state.like += myRate;
-        console.log([this.state.itemName,myRate])
+        console.log([this.state.itemName, myRate])
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 ItemName: this.state.itemName,
                 Like: myRate
             })
-        }; 
+        };
         const url = "http://api.996.com.de/item/rate";
         const response = await fetch(url, requestOptions);
         console.log(response);
+
+        let mountNode = document.getElementById('ratings');
+        ReactDOM.render(
+            <Col>
+                <Statistic id="likenum" title='Like' value={this.state.like} />
+                <Rate
+                    character={< HeartFilled /> }
+                    value={myRate}
+                    disabled={true}
+                    count={1}
+                />
+            </Col>, mountNode
+        );
+
+
     }
 
     async componentDidMount() {
@@ -47,7 +64,7 @@ class ItemDetails extends Component {
         console.log(data);
         // console.log(data.data[0][2]);
         this.setState({ itemDetails: data });
-        this.setState({ itemName: data.data[0][0], like: data.data[0][4]})
+        this.setState({ itemName: data.data[0][0], like: data.data[0][4] })
         this.setState({ loading: false });
     }
 
@@ -71,15 +88,54 @@ class ItemDetails extends Component {
                             <h6>{this.state.itemDetails.data[0][3]}</h6>
                         </Col>
                         <Col>
+                            <Row gutter={16}>
+                            <Col id='ratings'>
                             <Statistic id="likenum" title='Like' value={this.state.like} />
                             <Rate
-                                character={<HeartOutlined />}
+                                character={<HeartFilled />}
                                 onChange={(myRate) => this.setRating(myRate)}
-                                allowClear={false}
+                                count={1}
                             />
+                            </Col>
+                            </Row>
+                            <br/>
+                            <Row gutter={16}>
+                                <div className="site-statistic-demo-card">
+                                    <Row gutter={16}>
+                                        <Col>
+                                            <Card>
+                                                <Statistic
+                                                    title="24H CHANGE "
+                                                    value={11.28}
+                                                    precision={2}
+                                                    valueStyle={{ color: '#3f8600' }}
+                                                    prefix={<ArrowUpOutlined />}
+                                                    suffix="%"
+                                                />
+                                            </Card>
+                                        </Col>
+                                        <Col>
+                                            <Card>
+                                                <Statistic
+                                                    title="7DAY CHANGE"
+                                                    value={9.3}
+                                                    precision={2}
+                                                    valueStyle={{ color: '#cf1322' }}
+                                                    prefix={<ArrowDownOutlined />}
+                                                    suffix="%"
+                                                />
+                                            </Card>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </Row>
                         </Col>
                     </Row>
+                    
+                    <Row>
+                    </Row>
                     <hr />
+                    <Comments/>
                 </Container>
             );
         }
