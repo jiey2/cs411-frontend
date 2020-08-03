@@ -63,7 +63,7 @@ class Arbitrage extends Component {
             return (
                 <div className="Arbitrage">
                     <h2>Arbitrage Table  <Spinner animation="grow" variant="primary"/></h2>
-                    
+
                 </div>
             );
         } else {
@@ -77,7 +77,15 @@ class Arbitrage extends Component {
                                     <th>#</th>
                                     <th>Item Name</th>
                                     <th>Absolute Profit</th>
-                                    <th>Return in %</th>
+                                    <th>BitSkins Daily Volume</th>
+                                    <th>BitSkins Price</th>
+                                    <th>Percent of Profit</th>
+                                    <th>Steam Daily Volume</th>
+                                    <th>Steam Price</th>
+                                    <th>Steam Weekly Volume</th>
+                                    <th>Update Time</th>
+                                    <th>WAXPEER Volume</th>
+                                    <th>WAXPEER Price</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,11 +94,11 @@ class Arbitrage extends Component {
                         </Table>
                     </TableStyles>
                 </div>
-            ); 
+            );
         }
 
 
-        
+
     }
 }
 

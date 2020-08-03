@@ -79,7 +79,7 @@ class Home extends Component {
                     </Row>
                     <Row>
                         <Col style={{ margin: 'auto', textAlign: "center", padding: '10px' }}>
-                            <Button type="primary" href="/search" size='large' shape='round'> <text>Check an item</text></Button>
+                            <Button type="primary" href="/search" size='large' shape='block'> <text>Check an item</text></Button>
                         </Col>
                     </Row>
                     <hr />
