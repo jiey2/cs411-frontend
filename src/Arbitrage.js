@@ -28,13 +28,6 @@ class Arbitrage extends Component {
         // change timestamp to str time
         var timestamp = item.UpdateTime;
         var date = new Date(timestamp * 1000);
-        // Hours part from the timestamp
-        var hours = date.getHours();
-        // Minutes part from the timestamp
-        var minutes = "0" + date.getMinutes();
-        // Seconds part from the timestamp
-        var seconds = "0" + date.getSeconds();
-        // Will display time in 10:30:23 format
         var formattedTime = date.toLocaleDateString() + " " + date.toLocaleTimeString();
         item.UpdateTime = formattedTime;
 
@@ -59,7 +52,7 @@ class Arbitrage extends Component {
     }
 
     render() {
-        if (this.state.loading == true) {
+        if (this.state.loading === true) {
             return (
                 <div className="Arbitrage">
                     <h2>Arbitrage Table  <Spinner animation="grow" variant="primary"/></h2>

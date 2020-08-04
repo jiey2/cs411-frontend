@@ -1,7 +1,7 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { Image, Container } from 'react-bootstrap'
 import { Rate, Statistic, Row, Col, Card } from 'antd';
-import { HeartOutlined, ArrowUpOutlined, ArrowDownOutlined, HeartFilled } from '@ant-design/icons';
+import { ArrowUpOutlined, ArrowDownOutlined, HeartFilled } from '@ant-design/icons';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom'; 
 
@@ -85,7 +85,7 @@ class ItemDetails extends Component {
     }
 
     render() {
-        if (this.state.loading == true) {
+        if (this.state.loading === true) {
             return (
                 <div>
                     <h2>Item Details</h2>

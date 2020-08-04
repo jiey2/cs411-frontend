@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Alert, Result, Button  } from 'antd';
+import { Input, Alert, Result  } from 'antd';
 import ReactDOM from 'react-dom';
 
 const { Search } = Input;

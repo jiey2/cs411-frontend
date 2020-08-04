@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Switch from 'react-bootstrap/esm/Switch';
 
 class Lowestprice extends Component {
     state = {  }

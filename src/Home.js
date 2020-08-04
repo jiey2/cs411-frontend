@@ -3,8 +3,8 @@ import { Container, Col, Row } from 'react-bootstrap';
 import ReactTypingEffect from 'react-typing-effect';
 import styled from 'styled-components';
 import ReactPlayer from 'react-player/youtube';
-import { Button, Tooltip } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+
 
 import './Home.css';
 import logo from './assests/996ICON2.svg';
