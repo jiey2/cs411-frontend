@@ -24,8 +24,15 @@ class ItemDetails extends Component {
             itemDetails: null,
             itemName: null,
             like: 0,
-            comments: null,
+            ItemComments: null,
         }
+        this.rerenderCallback = this.rerenderCallback.bind(this);
+    }
+
+    rerenderCallback() {
+        this.forceUpdate()
+        window.location.reload();
+        console.log("Force Update")
     }
 
     async setRating(myRate) {
@@ -74,10 +81,6 @@ class ItemDetails extends Component {
         this.setState({ itemName: data.data[0][0], like: data.data[0][4] })
         this.setState({ ItemComments: data.comments })
         this.setState({ loading: false });
-        
-    }
-
-    componentDidUpdate() {
         
     }
 
@@ -150,7 +153,7 @@ class ItemDetails extends Component {
                     <hr />
                     <Recommendations recomList={this.state.itemDetails.recommendations} />
                     <h2> Comments </h2>
-                    <Comments ItemName={this.state.itemName} Comments={this.state.ItemComments}/>
+                    <Comments rerenderCallback={this.rerenderCallback} ItemName={this.state.itemName} Comments={this.state.ItemComments}/>
                 </Container>
             );
         }
