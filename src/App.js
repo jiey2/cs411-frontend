@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Home from './Home';
 import About from './About';
@@ -25,7 +26,7 @@ class App extends Component {
               <Route path='/about' component={About} />
               <Route path='/arbitrage' component={Arbitrage} />
               <Route path='/lowestprice' component={Lowestprice} />
-              <Route path='/item/:name' component={ItemDetails}/>
+              <Route exact path='/item/:name' component={ItemDetails}/>
               <Route component={NoMatch} />
             </Switch>
           </Router>
@@ -37,3 +38,4 @@ class App extends Component {
 
 
 export default App;
+

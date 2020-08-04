@@ -42,16 +42,16 @@ class Arbitrage extends Component {
             <tr key={index}>
                 <td>{index + 1}</td>
                 <td><Link to={`/item/${encodeURIComponent(item.ItemName)}`}>{item.ItemName}</Link></td>
-                <td>{item.AbsoluteProfit}</td>
-                <td>{item.BitskinsNum}</td>
                 <td>{item.BitskinsPrice}</td>
-                <td>{item.PercentProfit}</td>
-                <td>{item.SteamDayVolume}</td>
-                <td>{item.SteamPrice}</td>
-                <td>{item.SteamWeekVolume}</td>
-                <td>{item.UpdateTime}</td>
-                <td>{item.WaxpeerNum}</td>
+                <td>{item.BitskinsNum}</td>
                 <td>{item.WaxpeerPrice}</td>
+                <td>{item.WaxpeerNum}</td>
+                <td>{item.SteamPrice}</td>
+                <td>{item.SteamDayVolume}</td>
+                <td>{item.SteamWeekVolume}</td>
+                <td>{item.AbsoluteProfit}</td>
+                <td>{item.PercentProfit}</td>
+                <td>{item.UpdateTime}</td>
             </tr>
         );
 
@@ -76,16 +76,16 @@ class Arbitrage extends Component {
                                 <tr>
                                     <th>#</th>
                                     <th>Item Name</th>
-                                    <th>Absolute Profit</th>
-                                    <th>BitSkins Daily Volume</th>
                                     <th>BitSkins Price</th>
-                                    <th>Percent of Profit</th>
-                                    <th>Steam Daily Volume</th>
-                                    <th>Steam Price</th>
-                                    <th>Steam Weekly Volume</th>
-                                    <th>Update Time</th>
-                                    <th>WAXPEER Volume</th>
+                                    <th>BitSkins Available Listing</th>
                                     <th>WAXPEER Price</th>
+                                    <th>WAXPEER Volume</th>
+                                    <th>Steam Price</th>
+                                    <th>Steam Daily Volume</th>
+                                    <th>Steam Weekly Volume</th>
+                                    <th>Absolute Profit</th>
+                                    <th>Percent of Profit</th>
+                                    <th>Update Time</th>
                                 </tr>
                             </thead>
                             <tbody>

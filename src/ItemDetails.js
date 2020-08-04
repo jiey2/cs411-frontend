@@ -4,7 +4,9 @@ import { Rate, Statistic, Row, Col, Card } from 'antd';
 import { HeartOutlined, ArrowUpOutlined, ArrowDownOutlined, HeartFilled } from '@ant-design/icons';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom'; 
+
 import Comments from './components/Comments';
+import Recommendations from './components/Recommendations';
 
 const StyleIcon = styled(Image)`
     width: 300px;
@@ -22,6 +24,7 @@ class ItemDetails extends Component {
             itemDetails: null,
             itemName: null,
             like: 0,
+            comments: null,
         }
     }
 
@@ -30,7 +33,11 @@ class ItemDetails extends Component {
         console.log([this.state.itemName, myRate])
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            
+            },
             body: JSON.stringify({
                 ItemName: this.state.itemName,
                 Like: myRate
@@ -65,7 +72,13 @@ class ItemDetails extends Component {
         // console.log(data.data[0][2]);
         this.setState({ itemDetails: data });
         this.setState({ itemName: data.data[0][0], like: data.data[0][4] })
+        this.setState({ ItemComments: data.comments })
         this.setState({ loading: false });
+        
+    }
+
+    componentDidUpdate() {
+        
     }
 
     render() {
@@ -135,7 +148,9 @@ class ItemDetails extends Component {
                     <Row>
                     </Row>
                     <hr />
-                    <Comments/>
+                    <Recommendations recomList={this.state.itemDetails.recommendations} />
+                    <h2> Comments </h2>
+                    <Comments ItemName={this.state.itemName} Comments={this.state.ItemComments}/>
                 </Container>
             );
         }
