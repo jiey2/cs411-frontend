@@ -34,6 +34,7 @@ class Recommendations extends Component {
 
                     </Col>
                     <Col span={4}>
+                        <Link to={`/item/${encodeURIComponent(this.state.recomList[1].ItemName)}`} >
                         <Card
                             hoverable
                             width={1}
@@ -41,8 +42,10 @@ class Recommendations extends Component {
                         >
                             <Meta description={this.state.recomList[1].ItemName} title={"$ " + this.state.recomList[1].SteamPrice} />
                         </Card>
+                        </Link>
                     </Col>
                     <Col span={4}>
+                        <Link to={`/item/${encodeURIComponent(this.state.recomList[2].ItemName)}`} >
                         <Card
                             hoverable
                             width={1}
@@ -50,8 +53,10 @@ class Recommendations extends Component {
                         >
                             <Meta description={this.state.recomList[2].ItemName} title={"$ " + this.state.recomList[2].SteamPrice} />
                         </Card>
+                        </Link>
                     </Col>
                     <Col span={4}>
+                        <Link to={`/item/${encodeURIComponent(this.state.recomList[3].ItemName)}`} >
                         <Card
                             hoverable
                             width={1}
@@ -59,8 +64,10 @@ class Recommendations extends Component {
                         >
                             <Meta description={this.state.recomList[3].ItemName} title={"$ " + this.state.recomList[3].SteamPrice} />
                         </Card>
+                        </Link>
                     </Col>
                     <Col span={4}>
+                        <Link to={`/item/${encodeURIComponent(this.state.recomList[4].ItemName)}`} >
                         <Card
                             hoverable
                             width={1}
@@ -68,6 +75,7 @@ class Recommendations extends Component {
                         >
                             <Meta description={this.state.recomList[4].ItemName} title={"$ " + this.state.recomList[4].SteamPrice} />
                         </Card>
+                        </Link>
                     </Col>
                 </Row>
                 <br />

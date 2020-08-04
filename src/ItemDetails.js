@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 
 import Comments from './components/Comments';
 import Recommendations from './components/Recommendations';
+import PriceStat from './components/PriceStat';
 
 const StyleIcon = styled(Image)`
     width: 300px;
@@ -150,6 +151,8 @@ class ItemDetails extends Component {
                     
                     <Row>
                     </Row>
+                    <hr/>
+                    <PriceStat ItemStat={this.state.itemDetails.statistics}/>
                     <hr />
                     <Recommendations recomList={this.state.itemDetails.recommendations} />
                     <h2> Comments </h2>

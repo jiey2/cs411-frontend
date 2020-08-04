@@ -41,7 +41,7 @@ export const NavigationBar = () => {
                         <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/arbitrage">Arbitrage Table</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/lowestprice">Find Lowest Price</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/search">Search</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="https://wiki.illinois.edu/wiki/display/CS411SU20/Overview">CS411 </Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>

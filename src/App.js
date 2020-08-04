@@ -5,7 +5,6 @@ import Home from './Home';
 import About from './About';
 import SearchPage from './SearchPage';
 import Arbitrage from './Arbitrage';
-import Lowestprice from './Lowestprice';
 import NoMatch from './NoMatch';
 import ItemDetails from './ItemDetails';
 import { Layout } from './components/Layout';
@@ -24,7 +23,6 @@ class App extends Component {
               <Route exact path='/search' component={SearchPage}/>
               <Route path='/about' component={About} />
               <Route path='/arbitrage' component={Arbitrage} />
-              <Route path='/lowestprice' component={Lowestprice} />
               <Route exact path='/item/:name' component={ItemDetails}/>
               <Route component={NoMatch} />
             </Switch>
