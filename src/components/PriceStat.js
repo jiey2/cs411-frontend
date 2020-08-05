@@ -21,7 +21,7 @@ class PriceStat extends Component {
         super(props);
         this.state = {
             BitSkinsUpdateTime: this.props.ItemStat[0].BitSkinsUpdateTime,
-            BitSkinsNum: this.props.ItemStat[0].BitSkinsNum,
+            BitskinsNum: this.props.ItemStat[0].BitskinsNum,
             BitskinsPrice: this.props.ItemStat[0].BitskinsPrice,
             BuffPrice: this.props.ItemStat[0].BuffPrice,
             BuffNum: this.props.ItemStat[0].BuffNum,
@@ -54,7 +54,7 @@ class PriceStat extends Component {
                                 <br/>
                                 <Statistic 
                                     title="Available listings"
-                                    value={this.state.BitSkinsNum}
+                                    value={this.state.BitskinsNum}
                                 ></Statistic>
                                 <br />
 
