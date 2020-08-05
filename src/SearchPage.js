@@ -13,7 +13,7 @@ class SearchPage extends Component {
         let errorMsgMountNode = document.getElementById('searchMsg');
 
         console.log(input);
-        const url = `http://api.996.com.de/item/${encodeURIComponent(input)}`;
+        const url = `https://api.996.com.de/item/${encodeURIComponent(input)}`;
         const response = await fetch(url);
         const data = await response.json();
         if (data.found === true) {

@@ -3,7 +3,7 @@ import { Image, Container } from 'react-bootstrap'
 import { Rate, Statistic, Row, Col, Card } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined, HeartFilled } from '@ant-design/icons';
 import styled from 'styled-components';
-import ReactDOM from 'react-dom'; 
+import ReactDOM from 'react-dom';
 
 import Comments from './components/Comments';
 import Recommendations from './components/Recommendations';
@@ -26,6 +26,9 @@ class ItemDetails extends Component {
             itemName: null,
             like: 0,
             ItemComments: null,
+            avgweekprice: null,
+            avgmonthprice: null,
+            steamprice: null,
         }
         this.rerenderCallback = this.rerenderCallback.bind(this);
     }
@@ -41,17 +44,17 @@ class ItemDetails extends Component {
         console.log([this.state.itemName, myRate])
         const requestOptions = {
             method: 'POST',
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
-            
+
             },
             body: JSON.stringify({
                 ItemName: this.state.itemName,
                 Like: myRate
             })
         };
-        const url = "http://api.996.com.de/item/rate";
+        const url = "https://api.996.com.de/item/rate";
         const response = await fetch(url, requestOptions);
         console.log(response);
 
@@ -60,20 +63,20 @@ class ItemDetails extends Component {
             <Col>
                 <Statistic id="likenum" title='Like' value={this.state.like} />
                 <Rate
-                    character={< HeartFilled /> }
+                    character={< HeartFilled />}
                     value={myRate}
                     disabled={true}
                     count={1}
                 />
             </Col>, mountNode
         );
-
-
     }
+
+
 
     async componentDidMount() {
         const itemName = this.props.match.params.name;
-        const url = `http://api.996.com.de/item/${encodeURIComponent(itemName)}`;
+        const url = `https://api.996.com.de/item/${encodeURIComponent(itemName)}`;
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
@@ -82,10 +85,31 @@ class ItemDetails extends Component {
         this.setState({ itemName: data.data[0][0], like: data.data[0][4] })
         this.setState({ ItemComments: data.comments })
         this.setState({ loading: false });
-        
+        this.setState({ steamprice: data.statistics[0].SteamPrice})
+
+        this.setState({ avgweekprice: data.statistics[0].AvgWeekPrice })
+        this.setState({ avgmonthprice: data.statistics[0].AvgMonthPrice })
     }
 
     render() {
+        
+        let weekmove = (this.state.steamprice - this.state.avgweekprice) / (this.state.avgweekprice) * 100 
+        let monthmove = (this.state.steamprice - this.state.avgmonthprice) / (this.state.avgmonthprice) * 100
+        let weekincrease = false;
+        let monthincrease = false;
+        if (weekmove > 0) {
+            weekincrease = true
+        } else {
+            weekincrease = false
+        }
+
+        if (monthmove > 0) {
+            monthincrease = true
+        } else {
+            monthincrease = false
+        }
+        console.log(weekmove,monthmove)
+
         if (this.state.loading === true) {
             return (
                 <div>
@@ -106,27 +130,27 @@ class ItemDetails extends Component {
                         </Col>
                         <Col>
                             <Row gutter={16}>
-                            <Col id='ratings'>
-                            <Statistic id="likenum" title='Like' value={this.state.like} />
-                            <Rate
-                                character={<HeartFilled />}
-                                onChange={(myRate) => this.setRating(myRate)}
-                                count={1}
-                            />
-                            </Col>
+                                <Col id='ratings'>
+                                    <Statistic id="likenum" title='Like' value={this.state.like} />
+                                    <Rate
+                                        character={<HeartFilled />}
+                                        onChange={(myRate) => this.setRating(myRate)}
+                                        count={1}
+                                    />
+                                </Col>
                             </Row>
-                            <br/>
+                            <br />
                             <Row gutter={16}>
                                 <div className="site-statistic-demo-card">
                                     <Row gutter={16}>
                                         <Col>
                                             <Card>
                                                 <Statistic
-                                                    title="24H CHANGE "
-                                                    value={11.28}
+                                                    title="7Day Change "
+                                                    value={weekmove}
                                                     precision={2}
-                                                    valueStyle={{ color: '#3f8600' }}
-                                                    prefix={<ArrowUpOutlined />}
+                                                    valueStyle={weekincrease ? { color: '#3f8600' } : { color: '#cf1322'}}
+                                                    prefix={weekincrease ? < ArrowUpOutlined />: <ArrowDownOutlined />}
                                                     suffix="%"
                                                 />
                                             </Card>
@@ -134,11 +158,11 @@ class ItemDetails extends Component {
                                         <Col>
                                             <Card>
                                                 <Statistic
-                                                    title="7DAY CHANGE"
-                                                    value={9.3}
+                                                    title="30Day Change"
+                                                    value={monthmove}
                                                     precision={2}
-                                                    valueStyle={{ color: '#cf1322' }}
-                                                    prefix={<ArrowDownOutlined />}
+                                                    valueStyle={monthincrease ? { color: '#3f8600' } : { color: '#cf1322' }}
+                                                    prefix={monthincrease ? < ArrowUpOutlined /> : <ArrowDownOutlined />}
                                                     suffix="%"
                                                 />
                                             </Card>
@@ -148,15 +172,15 @@ class ItemDetails extends Component {
                             </Row>
                         </Col>
                     </Row>
-                    
+
                     <Row>
                     </Row>
-                    <hr/>
-                    <PriceStat ItemStat={this.state.itemDetails.statistics}/>
+                    <hr />
+                    <PriceStat ItemStat={this.state.itemDetails.statistics} />
                     <hr />
                     <Recommendations recomList={this.state.itemDetails.recommendations} />
                     <h2> Comments </h2>
-                    <Comments rerenderCallback={this.rerenderCallback} ItemName={this.state.itemName} Comments={this.state.ItemComments}/>
+                    <Comments rerenderCallback={this.rerenderCallback} ItemName={this.state.itemName} Comments={this.state.ItemComments} />
                 </Container>
             );
         }

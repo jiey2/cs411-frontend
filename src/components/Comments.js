@@ -48,7 +48,7 @@ class Comments extends Component {
         var res = {};
         res['actions'] = [<span id={comment[0]} onClick={this.handleDelete.bind(this)}>Delete</span>]
         res['author'] = "USER";
-        res['avatar'] = 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon';
+        res['avatar'] = 'https://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon';
         res['content'] = comment[1];
         res['datetime'] = moment.unix(comment[2]).fromNow();
 
@@ -63,7 +63,7 @@ class Comments extends Component {
         console.log(this.state.comments)
         //this.setState({comments: this.state.comments.filter()})
         await this.setState({commentToDelete: event.target.id})
-        const url = "http://api.996.com.de/item/comments/deleteComment"
+        const url = "https://api.996.com.de/item/comments/deleteComment"
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -79,7 +79,7 @@ class Comments extends Component {
     }
 
     async uploadComments() {
-        const url = "http://api.996.com.de/item/comments/postComment";
+        const url = "https://api.996.com.de/item/comments/postComment";
         var timestamp = Math.floor(Date.now() / 1000);
         const requestOptions = {
             method: 'POST',

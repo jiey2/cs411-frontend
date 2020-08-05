@@ -16,7 +16,7 @@ class Arbitrage extends Component {
     }
 
     async componentDidMount() {
-        const url = "http://api.996.com.de/arbitrage";
+        const url = "https://api.996.com.de/arbitrage";
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);

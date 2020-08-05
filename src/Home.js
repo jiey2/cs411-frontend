@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import ReactTypingEffect from 'react-typing-effect';
 import styled from 'styled-components';
-import ReactPlayer from 'react-player/youtube';
+
 import { Button } from 'antd';
 
 
@@ -77,15 +77,10 @@ class Home extends Component {
                     <Row>
                         <ExplainText>A market data collection site of <a href="https://steamcommunity.com/market/" class="text-success" color={"#256"}>tradeable game assets</a>. Track, Record, Compare.</ExplainText>
                     </Row>
+                    <br/>
                     <Row>
                         <Col style={{ margin: 'auto', textAlign: "center", padding: '10px' }}>
                             <Button type="primary" href="/search" size='large' shape='block'> <text>Check an item</text></Button>
-                        </Col>
-                    </Row>
-                    <hr />
-                    <Row>
-                        <Col>
-                            <ReactPlayer url='https://youtu.be/RHC-uGDbu7s' style={{ margin: 'auto', padding: '20px' }} />
                         </Col>
                     </Row>
 
